@@ -40,7 +40,7 @@ Experiments on HotpotQA, 2WikiMultihopQA, and MuSiQue demonstrate that our appro
 
 ---
 
-## Project Structure
+## Project Structure How to Run:
 
 ```bash
 project/
@@ -55,3 +55,13 @@ project/
 ├── rag_paragraph_corpus.json
 ├── requirements.txt
 └── README.md
+
+Install dependencies:
+pip install pandas openai
+
+Set API key (recommended via environment variable):
+export DEEPSEEK_API_KEY=your_key
+
+Run script:
+python ThinkingMethodRAG.py
+
