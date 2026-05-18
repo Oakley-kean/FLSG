@@ -40,7 +40,7 @@ Experiments on HotpotQA, 2WikiMultihopQA, and MuSiQue demonstrate that our appro
 
 ---
 
-## Project Structure How to Run:
+## Project Structure
 
 ```bash
 project/
@@ -56,12 +56,118 @@ project/
 ├── requirements.txt
 └── README.md
 
-Install dependencies:
-pip install pandas openai
+# How to Run
 
-Set API key (recommended via environment variable):
-export DEEPSEEK_API_KEY=your_key
+## 1. Install Required Packages
 
-Run script:
-python ThinkingMethodRAG.py
+```bash
+pip install openai rank-bm25 numpy pandas tqdm scikit-learn
+```
+
+---
+
+## 2. Configure DeepSeek API Key
+
+Open the Python file and set your API key:
+
+```python
+deepseek_api_key = "YOUR_DEEPSEEK_API_KEY"
+```
+
+The default model is:
+
+```python
+model="deepseek-chat"
+```
+
+Get your API key from:
+
+https://platform.deepseek.com/
+
+---
+
+## 3. Download Datasets
+
+Please manually download:
+
+- HotpotQA
+- 2WikiMultihopQA
+- MuSiQue
+
+and place them in:
+
+```bash
+datasets/
+```
+
+---
+
+## 4. Prepare RAG Corpus
+
+Create or replace:
+
+```bash
+rag_paragraph_corpus.json
+```
+
+with your own retrieval corpus.
+
+Required format:
+
+```json
+[
+  {
+    "title": "Document Title",
+    "text": "Document content..."
+  }
+]
+```
+
+---
+
+## 5. Prepare Evaluation File
+
+Ensure the evaluation dataset file exists:
+
+```python
+musique_sample_100.json
+```
+
+Example format:
+
+```json
+[
+  {
+    "id": "1",
+    "question": "...",
+    "answer": "..."
+  }
+]
+```
+
+---
+
+## 6. Run the Code
+
+```bash
+python ThinkingMethod/main.py
+```
+
+or:
+
+```bash
+python main.py
+```
+
+---
+
+## 7. Output
+
+Prediction results will be saved to:
+
+```bash
+musique_thinkingmethodRAG2_results.jsonl
+```
+
+The final Exact Match (EM) accuracy will also be printed automatically.
 
