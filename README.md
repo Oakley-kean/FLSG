@@ -55,58 +55,43 @@ project/
 ├── rag_paragraph_corpus.json
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
 ## How to Run
 
-## 1. Install Required Packages
+### 1. Install Packages
 
 ```bash
 pip install openai rank-bm25 numpy pandas tqdm scikit-learn
 ```
 
----
+### 2. Configure API Key
 
-## 2. Configure DeepSeek API Key
-
-Open the Python file and set your API key:
+Set your DeepSeek API key:
 
 ```python
-deepseek_api_key = "YOUR_DEEPSEEK_API_KEY"
+deepseek_api_key = "YOUR_API_KEY"
 ```
 
-The default model is:
+### 3. Prepare Datasets
 
-```python
-model="deepseek-chat"
-```
-
-Get your API key from:
-
-https://platform.deepseek.com/
-
----
-
-## 3. Download Datasets
-
-Please manually download:
+Download and place:
 
 - HotpotQA
 - 2WikiMultihopQA
 - MuSiQue
 
-and place them in:
+under:
 
 ```bash
 datasets/
 ```
 
----
+### 4. Prepare RAG Corpus
 
-## 4. Prepare RAG Corpus
-
-Create or replace:
+Replace:
 
 ```bash
 rag_paragraph_corpus.json
@@ -114,62 +99,10 @@ rag_paragraph_corpus.json
 
 with your own retrieval corpus.
 
-Required format:
-
-```json
-[
-  {
-    "title": "Document Title",
-    "text": "Document content..."
-  }
-]
-```
-
----
-
-## 5. Prepare Evaluation File
-
-Ensure the evaluation dataset file exists:
-
-```python
-musique_sample_100.json
-```
-
-Example format:
-
-```json
-[
-  {
-    "id": "1",
-    "question": "...",
-    "answer": "..."
-  }
-]
-```
-
----
-
-## 6. Run the Code
+### 5. Run
 
 ```bash
 python ThinkingMethod/main.py
 ```
 
-or:
-
-```bash
-python main.py
-```
-
----
-
-## 7. Output
-
-Prediction results will be saved to:
-
-```bash
-musique_thinkingmethodRAG2_results.jsonl
-```
-
-The final Exact Match (EM) accuracy will also be printed automatically.
-
+Results will be saved automatically as `.jsonl` files.
